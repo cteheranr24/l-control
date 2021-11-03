@@ -1,3 +1,4 @@
+// Uso del $_SESSION para validar control de acceso.
 <?php
     if(!isset($_SESSION)) 
     { 
@@ -7,10 +8,11 @@
     if(isset($_GET['cerrar_sesion'])){
         session_unset(); 
 
-        // destroy the session 
+        // uso del session_destroy para finalizar la sesión.
         session_destroy(); 
 	}
 	
+	//Validamos que tipo de usuario ingresara.
 	if(isset($_SESSION['rol'])){
 		session_start();
         switch($_SESSION['rol']){
@@ -55,7 +57,8 @@
 					<img src="img/avatar.svg">
 
 						<h2 class="title">L-Control</h2>
-
+						
+						//Mensaje en caso que las credenciales sean incorrectas.
 						<?php
 						if (isset($errorLogin)) {
 							echo $errorLogin;
